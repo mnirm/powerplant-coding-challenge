@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Engie.PowerPlants.Api.Dao;
+namespace Engie.PowerPlants.Api.Acl.Dao;
 
 public class PowerPlantCalculatorDao
 {

@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using Engie.PowerPlants.Api.Models;
 
-namespace Engie.PowerPlants.Api.Dao;
+namespace Engie.PowerPlants.Api.Acl.Dao;
 
 public class PowerPlantDao
 {
@@ -8,10 +9,10 @@ public class PowerPlantDao
     public string Name { get; set; }
     
     [JsonPropertyName("type")]
-    public PowerPlantType Type { get; set; }
+    public PowerPlantType TypeDao { get; set; }
     
     [JsonPropertyName("efficiency")]
-    public double Efficiency { get; set; }
+    public decimal Efficiency { get; set; }
     
     [JsonPropertyName("pmin")]
     public int PMin { get; set; }

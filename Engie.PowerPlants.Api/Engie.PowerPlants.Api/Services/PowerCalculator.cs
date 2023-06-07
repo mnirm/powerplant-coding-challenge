@@ -3,7 +3,7 @@ using Engie.PowerPlants.Api.Models;
 
 namespace Engie.PowerPlants.Api.Services;
 
-internal class PowerProductionCalculator : IPowerProductionCalculator
+internal class PowerCalculator : IPowerCalculator
 {
     
     public List<PowerPlant> CalculatePower(List<PowerPlant> powerPlants, Fuels fuels, int load)
@@ -14,11 +14,11 @@ internal class PowerProductionCalculator : IPowerProductionCalculator
         {
             if (loadLeft <= 0)
             {
-                powerPlant.Production = 0;
+                powerPlant.ProductionPower = 0;
                 continue;
             }
 
-            powerPlant.Production = powerPlant.Type switch
+            powerPlant.ProductionPower = powerPlant.Type switch
             {
                 PowerPlantType.WindTurbine => powerPlant.PMax * (fuels.Wind / 100),
                 PowerPlantType.Turbojet or PowerPlantType.GasFired => loadLeft > powerPlant.PMax
@@ -27,7 +27,7 @@ internal class PowerProductionCalculator : IPowerProductionCalculator
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            loadLeft -= powerPlant.Production;
+            loadLeft -= powerPlant.ProductionPower;
         }
 
         return powerPlants;
